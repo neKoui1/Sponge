@@ -1,0 +1,31 @@
+from Stack import Stack
+
+def baseConverter(decNumber, base):
+    digits = '0123456789ABCDEF'
+    remstack = Stack()
+    while decNumber > 0:
+        rem = decNumber % base
+        remstack.push(rem)
+        decNumber //= base
+    resString = ''
+    while not remstack.isEmpty():
+        resString += digits[remstack.pop()]
+    return resString
+
+def divideBy2(decNumber):
+    remstack = Stack()
+    while decNumber > 0:
+        rem = decNumber % 2
+        remstack.push(rem)
+        decNumber //= 2
+    binString = ''
+    while not remstack.isEmpty():
+        binString += str(remstack.pop())
+    return binString
+
+print(divideBy2(100))
+
+print(baseConverter(100, 2))
+print(baseConverter(100, 8))
+print(baseConverter(100, 10))
+print(baseConverter(100, 16))
